@@ -1,0 +1,18 @@
+.p1 {
+  display: inherit;
+  width: inherit;
+  height: inherit;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 21px;
+  overflow: hidden;
+  -webkit-line-clamp: inherit;
+  -webkit-box-orient: inherit;
+  text-overflow: inherit;
+  // white-space: nowrap;
+}
+
+.black-20 {
+  color: var(--black-20)
+}
