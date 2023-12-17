@@ -1,0 +1,1 @@
+export type TColor = 'primary' | 'black' | 'black-20' | 'black-30' | 'black-40' 
