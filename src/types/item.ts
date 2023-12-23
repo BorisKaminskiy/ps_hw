@@ -1,4 +1,5 @@
 export interface ItemProps {
+  id: string | number
   image: string;
   section: "Front-end" | "Back-end";
   period: number;

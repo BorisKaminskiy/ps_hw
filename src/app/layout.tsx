@@ -1,6 +1,10 @@
 import type { Metadata } from 'next'
 import { Open_Sans } from "next/font/google";
 import "./globals.css";
+import { Header } from "./_layoutComponents/Header/Header";
+import cn from "classnames";
+import styles from "./layout.module.scss";
+import { Portal } from "@/components/Portal/Portal";
 
 const openSans = Open_Sans({ subsets: ["cyrillic"], display: "swap" });
 
@@ -24,7 +28,13 @@ export default function RootLayout({
 }): JSX.Element {
   return (
     <html lang='ru'>
-      <body className={openSans.className}>{children}</body>
+      <body className={cn(openSans.className)}>
+        <div className={cn(styles.wrapper)}>
+          <Header />
+          {children}
+        </div>
+        <Portal />
+      </body>
     </html>
   );
 }

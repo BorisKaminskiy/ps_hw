@@ -1,14 +1,9 @@
 import { FC } from "react";
 import styles from "./page.module.scss";
-
-import Card from "@/components/Card/Card";
+import { Cards } from "./_layoutComponents/Header/Cards/Cards";
 
 const Home: FC = () => {
-  return (
-    <main className={styles.main}>
-      <Card />
-    </main>
-  );
+  return <main className={styles.main}>{<Cards />}</main>;
 };
 
 export default Home;
