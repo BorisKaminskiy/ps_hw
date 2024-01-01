@@ -8,7 +8,7 @@ interface IAtagProps
     AnchorHTMLAttributes<HTMLAnchorElement>,
     HTMLAnchorElement
   > {
-  variant?: "a1";
+  variant?: "a1" | "a2";
   color?: TColor;
 }
 

@@ -5,6 +5,6 @@ export interface ISvgProps
     SVGLineElementAttributes<HTMLOrSVGElement>,
     HTMLOrSVGElement
   > {
-  width: number | string
-  height: number | string
+  width?: number | string
+  height?: number | string
   }
