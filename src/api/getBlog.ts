@@ -1,16 +1,31 @@
-import { items } from "@/mocks/items";
-import { ItemProps } from "@/types/item";
+import { IPost } from "@/types/posts";
 
-
-export const getData = async (): Promise<any> => {
+export const getBlog = async (id: number): Promise<IPost | null> => {
   
-  const response = await fetch('https://jsonplaceholder.typicode.com/posts/1', {
+  const response = await fetch(`${process.env.NEXT_PUBLIC_DOMAIN}/posts/${id}`, {
     next: {
-      revalidate: 60,
+      revalidate: 600,
     }
   })
     
-  if (!response.ok) throw new Error('error')
+  if (!response.ok) {
+    return null;
+  }
  
+  return response.json()
+} 
+
+export const getBlogs = async (): Promise<IPost[]> => {
+  
+  const response = await fetch(`${process.env.NEXT_PUBLIC_DOMAIN}/posts`, {
+    next: {
+      revalidate: 600,
+    }
+  })
+    
+  if (!response.ok) {
+    throw new Error('error');
+  }
+
   return response.json()
 } 
