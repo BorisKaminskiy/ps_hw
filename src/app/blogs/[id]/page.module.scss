@@ -1,0 +1,22 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  padding-top: 25px;
+}
+
+.breadcrumbs {
+  display: flex;
+  column-gap: 10px;
+  padding-top: 13px;
+}
+
+.paragraph_wrapper {
+  display: flex;
+  max-width: 687px;
+  padding-right: 27px;
+}
+
+.subtitle {
+  padding-top: 50px;
+  padding-bottom: 24px;
+}
