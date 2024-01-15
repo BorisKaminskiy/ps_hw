@@ -6,6 +6,7 @@ import styles from "./LikeContainer.module.scss";
 import Typography from "@/components/Typography/Typography";
 import LikeIcon from "@/assets/svg/LikeIcon";
 
+
 interface ILikeContainerProps {
   blogId: string;
 }
