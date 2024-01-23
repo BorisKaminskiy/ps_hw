@@ -2,6 +2,7 @@ import { AnchorHTMLAttributes, DetailedHTMLProps, FC } from "react";
 import cn from "classnames";
 import styles from "./Atag.module.scss";
 import { TColor } from "@/types/colors";
+import Link from "next/link";
 
 interface IAtagProps
   extends DetailedHTMLProps<
@@ -16,19 +17,19 @@ const Atag: FC<IAtagProps> = ({
   variant = "a1",
   color = "black-20",
   children,
-  href,
+  href = "/",
   ...props
 }): JSX.Element => {
   return (
     <>
-      <a
+      <Link
         className={cn(styles[variant])}
         style={{ color: `var(--${color})` }}
         href={href}
         target='_blank'
       >
         {children}
-      </a>
+      </Link>
       <span> </span>
     </>
   );

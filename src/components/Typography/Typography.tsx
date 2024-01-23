@@ -4,7 +4,7 @@ import styles from "./Typography.module.scss";
 import { TColor } from "@/types/colors";
 
 interface ITypographyProps {
-  variant: "t1" | "t2" | "t3";
+  variant: "t1" | "t2" | "t3" | "t4" | "t5";
   children: ReactNode;
   color: TColor;
 }
