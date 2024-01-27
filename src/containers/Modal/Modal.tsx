@@ -7,10 +7,10 @@ import image from "../../assets/img/Frame 24.png";
 
 interface IModalProps {
   variant: "success" | "error";
-  children: ReactNode;
+
 }
 
-const Modal: FC<IModalProps> = ({ variant, children }) => {
+const Modal: FC<IModalProps> = ({ variant }) => {
   const [isOpen, setIsOpen] = useState(true);
 
   return (
@@ -18,7 +18,10 @@ const Modal: FC<IModalProps> = ({ variant, children }) => {
       {isOpen && (
         <div className={cn(styles.root)}>
           <div className={cn(styles.modal)}>
-            <span className={cn(styles.message)}>{children}</span>
+            <span className={cn(styles.message)}>
+              {variant === 'success' && 'Спасибо за Ваш отзыв'}
+              {variant === 'error' && 'ОЙ, ошибка ...'}
+            </span>
             <Image
               width={550}
               height={300}

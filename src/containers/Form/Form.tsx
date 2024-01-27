@@ -83,8 +83,10 @@ export const Form: FC<IFormProps> = ({ id }) => {
         />
         <Button disabled={isSuccess}>Отправить</Button>
       </form>
-      {isSuccess === true && <Modal variant='success'>Спасибо за Ваш отзыв</Modal>}
-      {isSuccess === false && <Modal variant='error'>Ошибка </Modal>}
+      {isSuccess !== undefined && <Modal variant={isSuccess ? 'success' : 'error'} />}
+
+      {/* {isSuccess === true && <Modal variant='success'>Спасибо за Ваш отзыв</Modal>}
+      {isSuccess === false && <Modal variant='error'>Ошибка </Modal>} */}
     </>
   );
 };
