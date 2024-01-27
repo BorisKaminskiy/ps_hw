@@ -1,4 +1,4 @@
-import { FC, ReactNode } from "react";
+import { DetailedHTMLProps, FC, ReactNode } from "react";
 import cn from "classnames";
 import styles from "./Typography.module.scss";
 import { TColor } from "@/types/colors";

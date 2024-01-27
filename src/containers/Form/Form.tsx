@@ -1,6 +1,6 @@
 "use client";
 
-import { FC, useState } from "react";
+import { FC, useEffect } from "react";
 import cn from "classnames";
 import styles from "./Form.module.scss";
 import Input from "@/components/Input/Input";
@@ -11,6 +11,8 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import Typography from "@/components/Typography/Typography";
 import Modal from "../Modal/Modal";
+import { useFetch } from "@/hooks/useFetch";
+import { endpoints } from "@/api/endPoints";
 
 interface IFormProps {
   id: string | number;
@@ -22,8 +24,9 @@ interface IForm {
 }
 
 export const Form: FC<IFormProps> = ({ id }) => {
-  const [loading, setLoading] = useState(false);
-  const [isSuccess, setIsSuccess] = useState<boolean>();
+  const { response, loading, error, isSuccess, changeParams } = useFetch()
+
+  useEffect(() => { isSuccess && reset() }, [isSuccess])
 
   const schema = yup
     .object({
@@ -39,35 +42,19 @@ export const Form: FC<IFormProps> = ({ id }) => {
     register,
     control,
     handleSubmit,
-
     reset,
     formState: { errors, isLoading },
   } = useForm<IForm>({
     resolver: yupResolver(schema),
   });
 
+
   const onSubmit = async (data: IForm) => {
-    setLoading(true);
-    try {
-      const request = await fetch(
-        `https://jsonplaceholder.typicode.com/posts/${id}`,
-        {
-          method: "PUT",
-          body: JSON.stringify(data),
-        }
-      );
-      const response = await request.json();
-      if (!!response.id) {
-        reset();
-        setLoading(false);
-        setIsSuccess(true);
-      } else {
-      }
-    } catch (error) {
-      setLoading(false);
-      setIsSuccess(false);
-    } finally {
-    }
+    changeParams(endpoints.posts.putPost + id,
+      {
+        method: 'PUT',
+        body: JSON.stringify(data)
+      })
   };
 
   return (
@@ -96,7 +83,7 @@ export const Form: FC<IFormProps> = ({ id }) => {
         />
         <Button disabled={isSuccess}>Отправить</Button>
       </form>
-      {isSuccess && <Modal variant='success'>Спасибо за Ваш отзыв</Modal>}
+      {isSuccess === true && <Modal variant='success'>Спасибо за Ваш отзыв</Modal>}
       {isSuccess === false && <Modal variant='error'>Ошибка </Modal>}
     </>
   );
