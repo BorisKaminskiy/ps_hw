@@ -36,7 +36,7 @@ export const Form: FC<IFormProps> = ({ id }) => {
         .required("Поле комментарий обязательно для заполнения")
         .min(20, "Минимум 20 символов"),
     })
-    .required();
+    .required()
 
   const {
     register,
@@ -85,8 +85,6 @@ export const Form: FC<IFormProps> = ({ id }) => {
       </form>
       {isSuccess !== undefined && <Modal variant={isSuccess ? 'success' : 'error'} />}
 
-      {/* {isSuccess === true && <Modal variant='success'>Спасибо за Ваш отзыв</Modal>}
-      {isSuccess === false && <Modal variant='error'>Ошибка </Modal>} */}
     </>
   );
 };
