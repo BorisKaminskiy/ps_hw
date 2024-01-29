@@ -4,7 +4,7 @@ import "./globals.css";
 import { Header } from "./_layoutComponents/Header/Header";
 import cn from "classnames";
 import styles from "./layout.module.scss";
-import { Portal } from "@/components/Portal/Portal";
+
 
 const openSans = Open_Sans({ subsets: ["cyrillic"], display: "swap" });
 
@@ -33,7 +33,6 @@ export default function RootLayout({
           <Header />
           {children}
         </div>
-        <Portal />
       </body>
     </html>
   );

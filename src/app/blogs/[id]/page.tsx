@@ -14,7 +14,8 @@ import blogImage from "../../../assets/img/Safari (Catalina) - Dark 2.png";
 import { getBlog, getBlogs } from "@/api/getBlog";
 import { notFound } from "next/navigation";
 import { items } from "@/mocks/items";
-import { IPost } from "@/types/posts";
+import Comments from "@/containers/Comments/Comments";
+import { Form } from "@/containers/Form/Form";
 
 export const metadata: Metadata = {
   title: `Блог`,
@@ -86,6 +87,8 @@ const Blogs: FC<IBlogsProps> = async ({ params }) => {
           </div>
           <div className={cn(styles.subtitle)}></div>
           <LikeContainer blogId={String(data.id)} />
+          <Comments postId={Number(params.id)} />
+          <Form id={params.id} />
         </>
       )}
     </div>

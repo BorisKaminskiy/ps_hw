@@ -1,11 +1,13 @@
 :root {
   --max-width: 1100px;
   --primary: #1473E6;
-    --black: #2C2C2C;
-    --black-20: #6E6E6E;
-    --black-30: #4B4B4B;
-    --border: #F5F5F5;
-    --background-card: #E5F4FF;
+  --error: red;
+  --black: #2C2C2C;
+  --black-20: #6E6E6E;
+  --black-30: #4B4B4B;
+  --border: #F5F5F5;
+  --border-gray: rgba(40, 40, 40, 0.16);
+  --background-card: #E5F4FF;
 
 }
 
