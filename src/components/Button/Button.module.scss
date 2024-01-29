@@ -1,0 +1,55 @@
+.root {
+  all: unset;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  border: 1px solid;
+  border-color: transparent;
+  transition: background-color .2s linear, border-color .2s linear;
+  cursor: pointer;
+
+}
+
+.primary {
+  width: 229px;
+  height: 48px;
+  background-color: #303030;
+  color: white;
+
+  &:active {
+    border-color: var(--black-20);
+    transition: border .2s linear;
+  } 
+  
+  &:hover {
+    background-color: gray;
+    transition: background-color .2s linear;
+  }
+}
+
+.secondary {
+  background-color: var(--white);
+  border: 1px solid transparent;
+  border-radius: var(--radius-small);
+  color: var(--txt-black);
+
+  &:active {
+    border-color: var(--txt-black);
+    transition: border .2s linear;
+  } 
+  
+  &:hover {
+    background-color: var(--green-hover);
+    transition: background-color .2s linear;
+  }
+}
+
+.sm {
+  padding: 6px 16px;
+  border-radius: var(--radius-big);
+}
+
+.disabled {
+  display: none;
+}
