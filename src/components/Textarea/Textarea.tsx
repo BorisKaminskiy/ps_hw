@@ -19,15 +19,18 @@ interface ITextareaProps
 // eslint-disable-next-line react/display-name
 const Textarea = forwardRef(
   ({ ...props }: ITextareaProps, ref: ForwardedRef<HTMLTextAreaElement>) => {
+    console.log(props.errors);
     return (
       <>
         <textarea
-          {...props}
           className={cn(styles.textarea, props.errors && styles.error)}
           ref={ref}
+          {...props}
         />
         {props.errors && (
-          <p className={cn(styles.error_message)}>{props.errors}</p>
+          <p className={cn(styles.error_message)} role='alert'>
+            {props.errors}
+          </p>
         )}
       </>
     );

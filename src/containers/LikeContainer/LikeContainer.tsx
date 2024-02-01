@@ -33,6 +33,8 @@ export const LikeContainer: FC<ILikeContainerProps> = ({
           isLiked ? styles.liked : styles.not_liked
         )}
         onClick={onClick}
+        aria-label={`лайк ${isLiked ? "лайк поставлен" : "лайк не поставлен"}`}
+        // aria-expanded={isLiked}
       >
         <LikeIcon width={16} height={16} stroke={isLiked ? "blue" : "black"} />
       </button>

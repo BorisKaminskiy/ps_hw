@@ -24,9 +24,11 @@ interface IForm {
 }
 
 export const Form: FC<IFormProps> = ({ id }) => {
-  const { response, loading, error, isSuccess, changeParams } = useFetch()
+  const { response, loading, error, isSuccess, changeParams } = useFetch();
 
-  useEffect(() => { isSuccess && reset() }, [isSuccess])
+  useEffect(() => {
+    isSuccess && reset();
+  }, [isSuccess]);
 
   const schema = yup
     .object({
@@ -43,18 +45,17 @@ export const Form: FC<IFormProps> = ({ id }) => {
     control,
     handleSubmit,
     reset,
+    clearErrors,
     formState: { errors, isLoading },
   } = useForm<IForm>({
     resolver: yupResolver(schema),
   });
 
-
   const onSubmit = async (data: IForm) => {
-    changeParams(endpoints.posts.putPost + id,
-      {
-        method: 'PUT',
-        body: JSON.stringify(data)
-      })
+    changeParams(endpoints.posts.putPost + id, {
+      method: "PUT",
+      body: JSON.stringify(data),
+    });
   };
 
   return (
@@ -75,18 +76,24 @@ export const Form: FC<IFormProps> = ({ id }) => {
 
         <Textarea
           {...register("comment")}
-          placeholder='Комментарий'
+          placeholder='Текст комментария'
           rows={3}
           errors={errors.comment?.message}
+          aria-label={`Оставить отзыв`}
           aria-invalid={errors.comment ? true : false}
           disabled={isSuccess}
         />
-        <Button disabled={isSuccess}>Отправить</Button>
+        <Button
+          disabled={isSuccess}
+          onClick={() => clearErrors()}
+          aria-label='Отправить'
+        >
+          Отправить
+        </Button>
       </form>
-      {isSuccess !== undefined && <Modal variant={isSuccess ? 'success' : 'error'} />}
-
-      {/* {isSuccess === true && <Modal variant='success'>Спасибо за Ваш отзыв</Modal>}
-      {isSuccess === false && <Modal variant='error'>Ошибка </Modal>} */}
+      {isSuccess !== undefined && (
+        <Modal variant={isSuccess ? "success" : "error"} />
+      )}
     </>
   );
 };
