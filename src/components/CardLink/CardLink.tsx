@@ -17,14 +17,12 @@ interface ICardLinkProps {
 const CardLink: FC<ICardLinkProps> = ({ href, children }) => {
   const router = useRouter();
 
+  const onKeyDown = (e: KeyboardEvent<HTMLAnchorElement>) => {
+    e.code === "Enter" && router.push(href);
+  };
+
   return (
-    <Link
-      className={cn(styles.root)}
-      href={href}
-      onKeyDown={(e: KeyboardEvent<HTMLAnchorElement>) => {
-        e.code === "Enter" && router.push(href);
-      }}
-    >
+    <Link className={cn(styles.root)} href={href} onKeyDown={onKeyDown}>
       <Typography variant='t1' color='primary' tabIndex={0}>
         {children}
       </Typography>

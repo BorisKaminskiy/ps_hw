@@ -13,21 +13,23 @@ const MainParagraph: FC<IMainParagraph> = ({ paragraph }) => {
   const [isVisible, setIsVisible] = useState<boolean>(false);
   const bodyRef = useRef<HTMLDivElement>(null);
 
-  const onAnchorKeydown = (key: KeyboardEvent) => {
-    if (key.code === "Enter") {
-      key.preventDefault();
+  const onAnchorKeydown = (e: KeyboardEvent) => {
+    if (e.code === "Enter") {
+      e.preventDefault();
       bodyRef.current?.focus();
       return;
     }
     setIsVisible(false);
   };
 
+  const onAnchorFocus = () => {
+    setIsVisible(true);
+  };
+
   return (
     <>
       <a
-        onFocus={() => {
-          setIsVisible(true);
-        }}
+        onFocus={onAnchorFocus}
         onKeyDown={onAnchorKeydown}
         tabIndex={2}
         className={cn(styles.anchor, isVisible && styles.visible)}

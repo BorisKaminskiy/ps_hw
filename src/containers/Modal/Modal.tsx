@@ -4,6 +4,7 @@ import cn from "classnames";
 import styles from "./Modal.module.scss";
 import Image from "next/image";
 import image from "../../assets/img/Frame 24.png";
+import { MODAL_STATUS_MAP } from "@/constants/constants";
 
 interface IModalProps {
   variant: "success" | "error";
@@ -18,8 +19,7 @@ const Modal: FC<IModalProps> = ({ variant }) => {
         <div className={cn(styles.root)} role='alert'>
           <div className={cn(styles.modal)}>
             <span className={cn(styles.message)} role='alert'>
-              {variant === "success" && "Спасибо за Ваш отзыв"}
-              {variant === "error" && "ОЙ, ошибка ..."}
+              {MODAL_STATUS_MAP[variant]}
             </span>
             <Image
               width={550}
