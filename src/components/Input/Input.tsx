@@ -38,7 +38,9 @@ const Input = forwardRef(
           ref={ref}
         />
         {props.errors && (
-          <p className={cn(styles.error_message)}>{props.errors}</p>
+          <p className={cn(styles.error_message)} role='alert'>
+            {props.errors}
+          </p>
         )}
       </>
     );

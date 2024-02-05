@@ -4,10 +4,10 @@ import cn from "classnames";
 import styles from "./Modal.module.scss";
 import Image from "next/image";
 import image from "../../assets/img/Frame 24.png";
+import { MODAL_STATUS_MAP } from "@/constants/constants";
 
 interface IModalProps {
   variant: "success" | "error";
-
 }
 
 const Modal: FC<IModalProps> = ({ variant }) => {
@@ -16,11 +16,10 @@ const Modal: FC<IModalProps> = ({ variant }) => {
   return (
     <>
       {isOpen && (
-        <div className={cn(styles.root)}>
+        <div className={cn(styles.root)} role='alert'>
           <div className={cn(styles.modal)}>
-            <span className={cn(styles.message)}>
-              {variant === 'success' && 'Спасибо за Ваш отзыв'}
-              {variant === 'error' && 'ОЙ, ошибка ...'}
+            <span className={cn(styles.message)} role='alert'>
+              {MODAL_STATUS_MAP[variant]}
             </span>
             <Image
               width={550}
@@ -32,6 +31,7 @@ const Modal: FC<IModalProps> = ({ variant }) => {
             <button
               className={cn(styles.button)}
               onClick={() => setIsOpen(false)}
+              aria-label='Закрыть модальное окно'
             >
               <svg
                 xmlns='http://www.w3.org/2000/svg'

@@ -16,6 +16,7 @@ import { notFound } from "next/navigation";
 import { items } from "@/mocks/items";
 import Comments from "@/containers/Comments/Comments";
 import { Form } from "@/containers/Form/Form";
+import MainParagraph from "@/containers/MainParagraph/MainParagraph";
 
 export const metadata: Metadata = {
   title: `Блог`,
@@ -70,7 +71,7 @@ const Blogs: FC<IBlogsProps> = async ({ params }) => {
           <div className={cn(styles.paragraph_wrapper)}>
             <Paragraph variant='p2'>
               {data.href && (
-                <Atag variant='a2' href={data.href}>
+                <Atag variant='a2' href={data.href} tabIndex={0}>
                   {data.hrefText}
                 </Atag>
               )}
@@ -85,6 +86,7 @@ const Blogs: FC<IBlogsProps> = async ({ params }) => {
           <div className={cn(styles.paragraph_wrapper)}>
             <Paragraph variant='p2'>{data.subarticle}</Paragraph>
           </div>
+          <MainParagraph paragraph={data.subarticle} />
           <div className={cn(styles.subtitle)}></div>
           <LikeContainer blogId={String(data.id)} />
           <Comments postId={Number(params.id)} />
